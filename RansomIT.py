@@ -4,8 +4,6 @@ Steps :
 # Generate random ID
 # Generate key pair from random ID
 # Encrypt data with public key
-# Connect to SFTP remote server
-# Store keys on sftp server
 
 """
 
