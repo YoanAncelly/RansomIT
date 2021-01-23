@@ -57,7 +57,6 @@ Author : Yoan Ancelly
 
 Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 
-
 ## Contributing
 
 1. Fork it (<https://github.com/0xYoan/RansomIT/fork>)
