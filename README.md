@@ -53,7 +53,7 @@ Your ID : e28b951c-5f1d-45fd-93a4-648007bc5066
 
 Author : Yoan Ancelly
 
-![Twitter Follow](https://img.shields.io/twitter/follow/0xYoan?style=social)
+[![Twitter Follow][twitter-image]][twitter-url]
 
 Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 
@@ -65,10 +65,12 @@ Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
-<!-- Markdown link & img dfn's -->
-[license-image]: https://img.shields.io/github/license/0xYoan/RansomIT
-[license-url]: https://www.gnu.org/licenses/gpl-3.0.en.html
-
 ## Disclaimer
 
 > This tool is only for testing and academic purposes and can only be used where strict consent has been given. Do not use it for illegal purposes! It is the end user’s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this tool and software in general.
+
+<!-- Markdown link & img dfn's -->
+[license-image]: https://img.shields.io/github/license/0xYoan/RansomIT
+[license-url]: https://www.gnu.org/licenses/gpl-3.0.en.html
+[twitter-image]: https://img.shields.io/twitter/follow/0xYoan?style=social
+[twitter-url]: https://twitter.com/0xYoan
