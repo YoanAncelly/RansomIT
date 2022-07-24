@@ -64,7 +64,7 @@ class Cryptographer:
         for root, _, files in os.walk(path, topdown=True):
             for filename in files:
                 if self.FILE_EXTENSION in filename:
-                    target = root+'/'+filename  # Write path+filename
+                    target = f'{root}/{filename}'
                     self.decrypt_data(target)  # Encrypt Data
                     self.decode_filename(target)  # Encode Filename
 
@@ -84,10 +84,10 @@ class Key:
 
         # Try opening private.key
         try:
-            with open('%s_private.key' % key_id, 'rb') as file:
+            with open(f'{key_id}_private.key', 'rb') as file:
                 self.private = PrivateKey(file.read())
         except FileNotFoundError:
-            print('[!] %s_private.key not found' % id)
+            print(f'[!] {id}_private.key not found')
 
 if __name__ == "__main__":
 
